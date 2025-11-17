@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Category = require("./../db/category");
-const { addCategory, updateCategory, deleteCategory } = require('../handlers/category-handler');
+const { addCategory, updateCategory, deleteCategory, getCategories } = require('../handlers/category-handler');
 // Get all categories
 router.get("/", async (req, res) => {
-    let model = req.body;
-    let categories = await Category.find(model);
-    res.send({ categories, message: "categories fetched successfully" });
+    let result = await getCategories();
+    res.send(result);
 });
 // Get a specific category
-router.get("/:id", async (req, res) => {
-    let model = req.body;
-    let id = req.params["id"];
-    let category = await Category.findOne({ _id: id }, model);
-    res.send({ category, message: "category found successfully" });
-});
+// router.get("/:id", async (req, res) => {
+//     let model = req.body;
+//     let id = req.params["id"];
+//     let category = await Category.findOne({ _id: id }, model);
+//     res.send({ category, message: "category found successfully" });
+// });
 // Create a new category
 router.post("/", async (req, res) => {
     let model = req.body;
@@ -30,9 +29,8 @@ router.put("/:id", async (req, res) => {
 });
 // Delete a category
 router.delete("/:id", async (req, res) => {
-    let model = req.body;
     let id = req.params["id"];
-    let result = await deleteCategory(id, model);
-    res.send({ result, message: "category deleted successfully" });
+    let result = await deleteCategory(id);
+    res.send({ message: "category deleted successfully" });
 });
 module.exports = router;

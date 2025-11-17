@@ -13,8 +13,12 @@ async function updateCategory(id, model) {
     return;
 }
 // Delete a category
-async function deleteCategory(id, model) {
-    await Category.findOneAndDelete({ _id: id }, model);
+async function deleteCategory(id,) {
+    await Category.findByIdAndDelete(id);
     return;
 }
-module.exports = { addCategory, updateCategory, deleteCategory };
+async function getCategories() {
+    let categories = await Category.find();
+    return categories.map((c) => c.toObject());
+}
+module.exports = { addCategory, updateCategory, deleteCategory, getCategories };
