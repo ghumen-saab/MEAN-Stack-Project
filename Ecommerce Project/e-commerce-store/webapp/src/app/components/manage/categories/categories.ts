@@ -5,10 +5,14 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Category } from '../../../services/category';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-categories',
-  imports: [MatFormFieldModule, MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule],
+  imports: [MatFormFieldModule,
+    MatInputModule, MatTableModule, MatSortModule, MatPaginatorModule,
+    MatButtonModule
+  ],
   templateUrl: './categories.html',
   styleUrl: './categories.scss',
 })
@@ -24,7 +28,6 @@ export class Categories {
   }
   ngOnInit() {
     this.categoryService.getCategories().subscribe((result: any) => {
-      console.log(result);
       this.dataSource.data = result;
     });
   }
