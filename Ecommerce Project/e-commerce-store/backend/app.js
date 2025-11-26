@@ -23,5 +23,5 @@ connectDb().catch(err => {
     console.error(err);
 })
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost`, port);
+    console.log(`Server is running on http://localhost:${port}`, port);
 });
