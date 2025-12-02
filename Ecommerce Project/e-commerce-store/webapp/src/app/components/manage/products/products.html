@@ -1,8 +1,8 @@
 <div class="px-40 mt-10">
   <div class="flex justify-between">
-    <h1 class="text-2xl font-bold">Manage Categories</h1>
-    <button mat-raised-button color="primary" routerLink="/admin/categories/add">
-      Add New Category
+    <h1 class="text-2xl font-bold">Manage Products</h1>
+    <button mat-raised-button color="primary" routerLink="/admin/products/add">
+      Add New Product
     </button>
   </div>
   <div class="shadow">
@@ -10,19 +10,18 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input />
     </mat-form-field>
+
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- ID Column -->
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
         <td mat-cell *matCellDef="let row">{{ row._id }}</td>
       </ng-container>
-
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
         <td mat-cell *matCellDef="let row">{{ row.name }}</td>
       </ng-container>
-
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
@@ -31,7 +30,7 @@
             mat-raised-button
             color="primary"
             class="mr-4"
-            [routerLink]="'/admin/categories/' + row._id"
+            [routerLink]="'/admin/products/' + row._id"
           >
             Edit
           </button>

@@ -23,7 +23,6 @@ export class CategoryForm {
     if (this.id) {
       this.isEdit = true;
       this.categoryService.getCategoryById(this.id).subscribe((result: any) => {
-        console.log(result);
         this.name = result.name;
       });
     }

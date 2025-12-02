@@ -4,14 +4,15 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Category } from '../../../services/category';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { CategoryModel } from '../../../types/category';
+import { Product } from '../../../services/product';
+import { ProductModel } from '../../../types/product';
+
 @Component({
-  selector: 'app-categories',
+  selector: 'app-products',
   imports: [
-    MatFormFieldModule,
+     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatSortModule,
@@ -19,15 +20,15 @@ import { CategoryModel } from '../../../types/category';
     MatButtonModule,
     RouterLink,
   ],
-  templateUrl: './categories.html',
-  styleUrl: './categories.scss',
+  templateUrl: './products.html',
+  styleUrl: './products.scss',
 })
-export class Categories {
-  displayedColumns: string[] = ['id', 'name', 'action'];
-  dataSource: MatTableDataSource<CategoryModel>;
+export class Products {
+displayedColumns: string[] = ['id', 'name', 'action'];
+  dataSource: MatTableDataSource<ProductModel>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  categoryService = inject(Category);
+  productService = inject(Product);
   constructor() {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource([] as any);
@@ -36,7 +37,7 @@ export class Categories {
     this.getServerData();
   }
   private getServerData() {
-    this.categoryService.getCategories().subscribe((result): void => {
+    this.productService.getAllProducts().subscribe((result) => {
       this.dataSource.data = result;
     });
   }
@@ -53,8 +54,8 @@ export class Categories {
     }
   }
   delete(id: string) {
-    this.categoryService.deleteCategoryById(id).subscribe((result) => {
-      alert('Category Deleted');
+    this.productService.deleteProductById(id).subscribe((result) => {
+      alert('Product Deleted');
       this.getServerData();
     });
   }

@@ -4,12 +4,12 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Category } from '../../../services/category';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { CategoryModel } from '../../../types/category';
+import { Brand } from '../../../services/brand';
+import { BrandModel } from '../../../types/brand';
 @Component({
-  selector: 'app-categories',
+  selector: 'app-brands',
   imports: [
     MatFormFieldModule,
     MatInputModule,
@@ -19,15 +19,15 @@ import { CategoryModel } from '../../../types/category';
     MatButtonModule,
     RouterLink,
   ],
-  templateUrl: './categories.html',
-  styleUrl: './categories.scss',
+  templateUrl: './brands.html',
+  styleUrl: './brands.scss',
 })
-export class Categories {
+export class Brands {
   displayedColumns: string[] = ['id', 'name', 'action'];
-  dataSource: MatTableDataSource<CategoryModel>;
+  dataSource: MatTableDataSource<BrandModel>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  categoryService = inject(Category);
+  brandService = inject(Brand);
   constructor() {
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource([] as any);
@@ -36,7 +36,7 @@ export class Categories {
     this.getServerData();
   }
   private getServerData() {
-    this.categoryService.getCategories().subscribe((result): void => {
+    this.brandService.getBrands().subscribe((result) => {
       this.dataSource.data = result;
     });
   }
@@ -53,8 +53,8 @@ export class Categories {
     }
   }
   delete(id: string) {
-    this.categoryService.deleteCategoryById(id).subscribe((result) => {
-      alert('Category Deleted');
+    this.brandService.deleteBrandById(id).subscribe((result) => {
+      alert('Brand Deleted');
       this.getServerData();
     });
   }
