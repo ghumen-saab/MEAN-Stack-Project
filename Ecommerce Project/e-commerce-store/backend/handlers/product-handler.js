@@ -30,9 +30,9 @@ async function getAllProducts() {
     return products.map((c) => c.toObject());
 }
 // Get a specific product
-async function getProduct(id) {
+async function getProductById(id) {
     let product = await Product.findById(id);
     return product.toObject();
 }
 // Export the functions
-module.exports = { addProduct, updateProduct, deleteProduct, getAllProducts, getProduct };
+module.exports = { addProduct, updateProduct, deleteProduct, getAllProducts, getProductById };

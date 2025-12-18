@@ -8,11 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../../services/product';
 import { ProductModel } from '../../../types/product';
-
 @Component({
   selector: 'app-products',
   imports: [
-     MatFormFieldModule,
+    MatFormFieldModule,
     MatInputModule,
     MatTableModule,
     MatSortModule,
@@ -24,7 +23,16 @@ import { ProductModel } from '../../../types/product';
   styleUrl: './products.scss',
 })
 export class Products {
-displayedColumns: string[] = ['id', 'name', 'action'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'shortDescription',
+    'description',
+    'price',
+    'discount',
+    'images',
+    'action',
+  ];
   dataSource: MatTableDataSource<ProductModel>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;

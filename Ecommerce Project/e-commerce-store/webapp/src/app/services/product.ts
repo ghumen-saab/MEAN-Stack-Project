@@ -7,24 +7,22 @@ import { ProductModel } from '../types/product';
 })
 export class Product {
   http = inject(HttpClient);
-    constructor() {}
-    getAllProducts() {
-      return this.http.get<ProductModel[]>(environment.apiUrl + '/product');
-    }
-    getProductById(id: string) {
-      return this.http.get<ProductModel>(environment.apiUrl + '/product/' + id);
-    }
-    addProduct(name: string) {
-      return this.http.post(environment.apiUrl + '/product', {
-        name: name,
-      });
-    }
-    updateProduct(id: string, name: string) {
-      return this.http.put(environment.apiUrl + '/product/' + id, {
-        name: name,
-      });
-    }
-    deleteProductById(id: string) {
-      return this.http.delete(environment.apiUrl + '/product/' + id);
-    }
+  constructor() {}
+  getAllProducts() {
+    return this.http.get<ProductModel[]>(environment.apiUrl + '/product');
+  }
+  getProductById(id: string) {
+    return this.http.get<ProductModel>(environment.apiUrl + '/product/' + id);
+  }
+  addProduct(product: ProductModel) {
+    return this.http.post(environment.apiUrl + '/product', product);
+  }
+  updateProduct(id: string, name: string) {
+    return this.http.put(environment.apiUrl + '/product/' + id, {
+      name: name,
+    });
+  }
+  deleteProductById(id: string) {
+    return this.http.delete(environment.apiUrl + '/product/' + id);
+  }
 }

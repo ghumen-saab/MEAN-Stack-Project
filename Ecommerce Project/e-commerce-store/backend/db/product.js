@@ -3,12 +3,16 @@ const productSchema = new mongoose.Schema({
     name: String,
     shortDescription: String,
     description: String,
-    Price: Number,
+    price: Number,
     discount: Number,
     images: Array(String),
     categoryId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'catrgories' // 'User' is the name of the model being referenced
+        ref: 'catrgories' // Reference to the Category model using ObjectId
+    },
+     brandId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'brands' // Reference to the Brand model using ObjectId
     },
 })
 const Product = mongoose.model('products', productSchema);

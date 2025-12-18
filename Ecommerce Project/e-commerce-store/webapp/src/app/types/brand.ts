@@ -1,4 +1,4 @@
 export interface BrandModel {
-  id?: string;
+  _id?: string;
   name: string;
 }
