@@ -28,7 +28,6 @@ export class CategoryForm {
     }
   }
   add() {
-    console.log(this.name);
     this.categoryService.addCategory(this.name).subscribe((result: any) => {
       alert('Category Added');
       this.router.navigateByUrl('/admin/categories');

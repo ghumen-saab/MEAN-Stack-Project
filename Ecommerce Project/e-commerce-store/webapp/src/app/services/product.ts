@@ -17,9 +17,9 @@ export class Product {
   addProduct(product: ProductModel) {
     return this.http.post(environment.apiUrl + '/product', product);
   }
-  updateProduct(id: string, name: string) {
+  updateProduct(id: string, product: ProductModel) {
     return this.http.put(environment.apiUrl + '/product/' + id, {
-      name: name,
+      ...product,
     });
   }
   deleteProductById(id: string) {

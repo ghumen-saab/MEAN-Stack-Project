@@ -8,4 +8,8 @@ export interface ProductModel {
   images: string;
   categoryId: string;
   brandId: string;
+  isFeatured: boolean;
+  isNew: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
