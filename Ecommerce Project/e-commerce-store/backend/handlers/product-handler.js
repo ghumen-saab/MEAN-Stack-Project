@@ -34,5 +34,49 @@ async function getProductById(id) {
     let product = await Product.findById(id);
     return product.toObject();
 }
+// async function getNewProducts() {
+//     let newProducts = await Product.find({ isNewProduct: true });
+//     return newProducts.map((p) => p.toObject());
+// }
+// async function getFeaturedProducts() {
+//     let featuredProducts = await Product.find({ isFeatured: true });
+//     return featuredProducts.map((p) => p.toObject());
+// }
 // Export the functions
-module.exports = { addProduct, updateProduct, deleteProduct, getAllProducts, getProductById };
+
+async function getNewProducts() {
+    try {
+        const newProducts = await Product
+            .find({ isNewProduct: true })
+            .lean(); //  IMPORTANT
+
+        return newProducts.map(p => ({
+            ...p,
+            id: p._id.toString() //  Angular @for FIX
+        }));
+    } catch (error) {
+        console.error('getNewProducts error:', error);
+        throw error;
+    }
+}
+
+async function getFeaturedProducts() {
+    try {
+        const featuredProducts = await Product
+            .find({ isFeatured: true })
+            .lean(); // IMPORTANT
+
+        return featuredProducts.map(p => ({
+            ...p,
+            id: p._id.toString()
+        }));
+    } catch (error) {
+        console.error('getFeaturedProducts error:', error);
+        throw error;
+    }
+}
+module.exports = {
+    addProduct, updateProduct, deleteProduct,
+    getAllProducts, getProductById,
+    getNewProducts, getFeaturedProducts
+};

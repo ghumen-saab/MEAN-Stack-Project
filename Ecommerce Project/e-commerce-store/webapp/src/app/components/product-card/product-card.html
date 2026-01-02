@@ -1,0 +1,41 @@
+<!-- Product Card -->
+<div class="bg-white rounded-xl shadow-md hover:shadow-lg
+               transition overflow-hidden flex flex-col h-full cursor-pointer hover:scale-105">
+  <!-- Image -->
+  <div class="h-56">
+    <img [src]="product.images" [alt]="product.name" class="w-full h-full object-cover" />
+  </div>
+  <!-- Content -->
+  <div class="p-4 flex flex-col justify-between flex-1">
+    <div>
+      <h3 class="text-lg font-semibold text-gray-800">
+        {{ product.name }}
+      </h3>
+      <p class="text-sm text-gray-500 mt-1">
+        {{ product.shortDescription }}
+      </p>
+      <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+        {{ product.description }}
+      </p>
+    </div>
+    <!-- Price -->
+    <div class="mt-4 flex items-center justify-between">
+      <div>
+        <span class="text-xl font-bold text-gray-900">
+          ${{ discountedPrice(product) }}
+        </span>
+        <span class="text-sm text-gray-400 line-through ml-2">
+          ${{ product.price }}
+        </span>
+        <span class="ml-2 text-sm text-red-500 font-semibold">
+          {{ product.discount }}% OFF
+        </span>
+      </div>
+      <button mat-flat-button color="primary"
+        class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+<!-- End Card -->

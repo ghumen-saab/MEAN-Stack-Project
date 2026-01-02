@@ -15,7 +15,7 @@ const productSchema = new mongoose.Schema({
         ref: 'brands' // Reference to the Brand model using ObjectId
     },
     isFeatured: Boolean,
-    isNew: Boolean,
+    isNewProduct: Boolean,
     createdAt: {
         type: Date,
         default: Date.now

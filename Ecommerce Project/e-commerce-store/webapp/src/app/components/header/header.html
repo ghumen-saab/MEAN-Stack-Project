@@ -3,17 +3,14 @@
     <!-- Top Header -->
     <div class="header__top">
       <div class="logo">ShopEase</div>
-
       <div class="search">
         <input type="text" placeholder="Search products..." />
       </div>
-
       <div class="actions">
         <a href="/profile" class="action-link">Profile</a>
         <a href="/cart" class="action-link cart"> Cart <span class="cart-count">2</span> </a>
       </div>
     </div>
-
     <!-- Bottom Header -->
     <nav class="header__bottom bg-gray-900">
       <ul class="category-menu">
@@ -21,8 +18,6 @@
         <li>
           <a href="#">{{ category.name }}</a>
         </li>
-        } @empty {
-        <li class="text-white">No Category Found</li>
         }
       </ul>
     </nav>

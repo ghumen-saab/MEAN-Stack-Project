@@ -18,9 +18,9 @@ export class BrandForm {
   id!: string;
   ngOnInit() {
     this.id = this.route.snapshot.params['id'];
-   this.brandService.getBrandById(this.id).subscribe((result: any) => {
-        this.name = result.name;
-      });
+    this.brandService.getBrandById(this.id).subscribe((result: any) => {
+      this.name = result.name;
+    });
   }
   add() {
     console.log(this.name);

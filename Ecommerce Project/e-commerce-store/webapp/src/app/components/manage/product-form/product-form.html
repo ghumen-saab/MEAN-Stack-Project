@@ -11,16 +11,14 @@
           <mat-label>Category</mat-label>
           <mat-select formControlName="categoryId">
             @for (item of Categories; track $index) {
-            <mat-option [value]="item._id">{{ item.name }}</mat-option
-            >}
+            <mat-option [value]="item._id">{{ item.name }}</mat-option>}
           </mat-select>
         </mat-form-field>
         <mat-form-field class="w-full">
           <mat-label>Brand</mat-label>
           <mat-select formControlName="brandId">
             @for (item of brands; track $index) {
-            <mat-option [value]="item._id">{{ item.name }}</mat-option
-            >}
+            <mat-option [value]="item._id">{{ item.name }}</mat-option>}
           </mat-select>
         </mat-form-field>
         <mat-form-field class="w-full">
@@ -45,7 +43,7 @@
         </mat-form-field>
         <div class="w-full flex gap-8">
           <mat-checkbox formControlName="isFeatured">Is Featured</mat-checkbox>
-          <mat-checkbox formControlName="isNew">Is New</mat-checkbox>
+          <mat-checkbox formControlName="isNewProduct">Is New</mat-checkbox>
         </div>
       </div>
       <div class="w-full flex flex-col" formArrayName="images">
@@ -64,21 +62,11 @@
     </div>
     <div class="w-full flex justify-center">
       @if(id){
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="productForm.invalid"
-        (click)="updateProduct()"
-      >
+      <button mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="updateProduct()">
         Update Product
       </button>
       }@else {
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="productForm.invalid"
-        (click)="addProduct()"
-      >
+      <button mat-raised-button color="primary" [disabled]="productForm.invalid" (click)="addProduct()">
         Add Product
       </button>
       }

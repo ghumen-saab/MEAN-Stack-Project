@@ -9,7 +9,7 @@ export interface ProductModel {
   categoryId: string;
   brandId: string;
   isFeatured: boolean;
-  isNew: boolean;
+  isNewProduct: boolean;
   createdAt?: Date;
   updatedAt?: Date;
 }
